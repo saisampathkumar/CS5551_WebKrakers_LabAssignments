@@ -8,6 +8,6 @@ Lab Assignments
 * EmailID: srtwr@mail.umkc.edu
 
 ### Member 2:
-* Name: Veeresha Thotigar
+* Name: Veeresha M Thotigar 
 * Class ID: 53
 * EmailID: vmt9mm@mail.umkc.edu
