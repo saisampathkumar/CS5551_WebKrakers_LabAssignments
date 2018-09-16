@@ -1,4 +1,4 @@
-# CS5551_team_1-2_LabAss
+# CS5551_WebKrakers_LabAssignments
 Lab Assignments
 
 ## Team Members:
