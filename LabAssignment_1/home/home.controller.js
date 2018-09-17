@@ -5,8 +5,10 @@
         .module('app')
         .controller('HomeController', HomeController);
 
+
     HomeController.$inject = ['$location','UserService', '$rootScope'];
     function HomeController($location,UserService, $rootScope)
+
     {
 
         var vm = this;
