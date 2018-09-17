@@ -10,11 +10,15 @@
     function config($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
+                controller: 'LoginController',
+                templateUrl: 'login/login.view.html',
+                controllerAs: 'vm'
+            })
+            .when('/home', {
                 controller: 'HomeController',
                 templateUrl: 'home/home.view.html',
                 controllerAs: 'vm'
             })
-
             .when('/login', {
                 controller: 'LoginController',
                 templateUrl: 'login/login.view.html',
@@ -28,6 +32,10 @@
             })
 
             .otherwise({ redirectTo: '/login' });
+            $locationProvider.html5Mode({
+                enabled: true,
+                requireBase: false
+            });
     }
 
     run.$inject = ['$rootScope', '$location', '$cookies', '$http'];

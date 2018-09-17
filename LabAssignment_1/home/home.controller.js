@@ -5,8 +5,10 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['UserService', '$rootScope'];
-    function HomeController(UserService, $rootScope)
+
+    HomeController.$inject = ['$location','UserService', '$rootScope'];
+    function HomeController($location,UserService, $rootScope)
+
     {
 
         var vm = this;
@@ -14,24 +16,31 @@
         vm.user = null;
         vm.allUsers = [];
         vm.deleteUser = deleteUser;
+        vm.logout = logout;
 
         initController();
 
 
         function initController()
         {
-
             loadCurrentUser();
             loadAllUsers();
         }
+        function logout() {
+          $location.path('/login');
+          FB.logout(function(response) {
+             // Person is now logged out
+             console.log('Person is now logged out');
 
+          });
+
+        }
 
         function loadCurrentUser()
         {
             UserService.GetByUsername($rootScope.globals.currentUser.username)
                 .then(function (user)
                 {
-
                     vm.user = user;
                 });
         }

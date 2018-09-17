@@ -31,14 +31,6 @@
                         callback(response);
                     });
             }, 1000);
-
-            /* Use this for real authentication
-             ----------------------------------------------*/
-            //$http.post('/api/authenticate', { username: username, password: password })
-            //    .success(function (response) {
-            //        callback(response);
-            //    });
-
         }
 
         function SetCredentials(username, password) {
