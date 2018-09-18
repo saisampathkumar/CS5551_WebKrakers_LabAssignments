@@ -70,7 +70,7 @@ body
     background: -o-radial-gradient(center, ellipse cover,  #0264d6 1%,#1c2b5a 100%); /* Opera 12+ */
     background: -ms-radial-gradient(center, ellipse cover,  #0264d6 1%,#1c2b5a 100%); /* IE10+ */
     background: radial-gradient(ellipse at center,  #0264d6 1%,#1c2b5a 100%); /* W3C */
-    height: 1000px;
+    height: 800px;
 }
 .a {
     display: inline; /* the default for span */
