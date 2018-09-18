@@ -1,12 +1,12 @@
 ﻿(function () {
-    'use strict';
+    "use strict";
 
     angular
-        .module('app')
-        .controller('HomeController', HomeController);
+        .module("app")
+        .controller("HomeController", HomeController);
 
 
-    HomeController.$inject = ['$location','UserService', '$rootScope','$http'];
+    HomeController.$inject = ["$location","UserService", "$rootScope","$http"];
     function HomeController($location,UserService, $rootScope,$http)
 
     {
@@ -18,13 +18,13 @@
         vm.deleteUser = deleteUser;
         vm.logout = logout;
         vm.searchKnowledge = searchKnowledge;
-        vm.searchText = '';
+        vm.searchText = "";
         vm.searchResult;
         vm.searchResult1;
 
         function searchKnowledge() {
-            var url = 'https://kgsearch.googleapis.com/v1/entities:search?query='+vm.searchText+'&key='+config.gKey+'&limit=1&indent=True';
-            var url1 = 'https://api.uclassify.com/v1/uclassify/sentiment/classify?readkey=o9tfns2s1mik&text='+vm.searchText;
+            var url = "https://kgsearch.googleapis.com/v1/entities:search?query='+vm.searchText+'&key='+config.gKey+'&limit=1&indent=True";
+            var url1 = "https://api.uclassify.com/v1/uclassify/sentiment/classify?readkey=o9tfns2s1mik&text="+vm.searchText;
             $http.get(url).then(function(response) {
                 console.log(response.data);
                 vm.searchResult = response.data.itemListElement[0].result;
@@ -32,18 +32,18 @@
                 vm.errorText = error;
             });
             $http.get(url1).then(function(response) {
-                console.log('Sentimental analysis'+response.data);
+                console.log("Sentimental analysis"+response.data);
                 vm.searchResult1 = response.data;
             }, function(error){
                 vm.errorText = error;
             });
-        };
+        }
 
         function logout() {
-          $location.path('/login');
+          $location.path("/login");
           FB.logout(function(response) {
              // Person is now logged out
-             console.log('Person is now logged out');
+             console.log("Person is now logged out");
 
           });
 
