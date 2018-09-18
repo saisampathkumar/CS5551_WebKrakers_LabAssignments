@@ -1,35 +1,135 @@
 <div class="underlinee">
-    <div class="linee lineandover lia over col col-sm-2">
-        <a style="color: #FCCB1A;font-size: 30px">WEB KRAKERS</a>
+    <div class="linee lineandover lia over col col-sm-3">
+        <p style="color: #FCCB1A;font-size: 30px">WEB KRAKERS</p>
     </div>
-    <div class="linee lineandover col col-sm-7">
-        <div id="custom-search-input">
-            <div class="input-group" style="border-radius: 5px">
-                <input type="text" class="search-query form-control" placeholder="Search" style="font-size: 18px" />
-                <button style="font-size: 20px; color: black" class="fa fa-search"></button>
-                <button style="font-size: 20px; color: black" class="fa fa-microphone"></button>
-            </div>
-        </div>
+    <div class="col col-sm-5">
+        <p> </p>
     </div>
+    <!--<div class="linee lineandover col col-sm-4" style="border-radius: 5px">-->
+        <!--<input type="text" class="search-query form-control" placeholder="Search" style="font-size: 26px; width:100%;" />-->
+    <!--</div>-->
+    <!--<div class="linee lineandover col col-sm-1" style="border-radius: 5px">-->
+        <!--<p><button style="font-size: 30px; color: black" class="fa fa-search" ng-click="vm.searchKnowledge()"></button>-->
+        <!--<button style="font-size: 30px; color: black" class="fa fa-microphone"></button></p>-->
+    <!--</div>-->
+    <div class="linee lineandover lia over col col-sm-3 ">
+        <a style="color: #FCCB1A; font-size: 28px">Hi {{vm.user.firstName}}!</a>
+        <br/>
+        <a style="text-align: left; color: #FCCB1A; font-size: 20px ">You're logged in!!</a>
+    </div>
+    <div class="linee lineandover lia over col col-sm-1"  >
+        <p> <a class="linee lineandover lia over"  href="javascript:void(0)" ng-click="vm.logout()" style="text-align: left; font-size: 28px"><i class="fa fa-sign-out"></i></a></p>
+    </div>
+</div>
    <!-- <div class="linee lineandover lia over col col-sm-3">
         <a style="color: #FCCB1A;font-size: 30px" ng-click="vm.deleteUser(user.id)" >Delete Account</a>
     </div> -->
-    <div class="linee lineandover lia over col col-sm-3">
-        <a style="color: #FCCB1A; font-size: 20px">Hi {{vm.user.firstName}}!</a>
-        <br/>
-        <a style="text-align: left; color: #FCCB1A ">You're logged in!!</a>
-    </div>
-</div>
+<br/>
 <div>
-    <div class="col col-sm-1 lia underlinee" style="text-align: left; font-size: 30px; color: #FCCB1A;">
-        <a class="fa fa-bars" style="text-align: center"></a>
+    <div class="col col-sm-2">
+        <p>
+
+        </p>
+    </div>
+    <div class="linee lineandover col col-sm-7" style="border-radius: 5px">
+        <input ng-model="vm.searchText" type="text" class="search-query form-control" placeholder="Search" style="font-size: 26px; width:100%;" />
+    </div>
+    <div class="linee lineandover col col-sm-1" style="border-radius: 5px">
+        <br/>
+        <p><button style="font-size: 30px; color: black; width: 55px ; border-radius: 5px" class="fa fa-search" ng-click="vm.searchKnowledge()"></button>
+    </div>
+    <div class="linee lineandover  col col-sm-1">
+        <br/>
+        <button style="font-size: 30px; color: black; width:50px; border-radius: 5px" class="fa fa-microphone"></button></p>
+    </div>
+    <div class="linee lineandover col col-sm-2">
+        <p> </p>
     </div>
 </div>
- <div class="linee lineandover lia over dropdown">
-            <button style="color: #FCCB1A;font-size: 30px ; text-align: left" class="dropbtn fa fa-bars"></button>
-        <div class=" col col-sm-12 dropdown-content">
-            <a class="linee lineandover lia over"  href="javascript:void(0)" ng-click="vm.logout()" style="; font-size: 30px">Logout</a>
-            <a class="linee lineandover lia over" href="vm.deleteUser(user.id)" style="color: black; font-size: 30px" >Delete Account</a>
-        </div>
- </div>
+<div class="linee lineandove" style="border: 5px">
+<div class="col col-sm-12" align="center">
+    <p style="color: white; font-size: 40px"><b>{{vm.searchResult.name}}</b></p>
+</div>
+<div class="col col-sm-12" align="center">
+    <p style="color: white; font-size: 20px">{{vm.searchResult.description}}</p>
+</div >
+<div class="col col-sm-12" align="center">
+    <img ng-src="{{vm.searchResult.image.contentUrl}}" border="3px">
+</div>
+    <br/>
+<div class="col col-sm-12" align="center">
+    <div class="col col-sm-3">
+        <p> </p>
+    </div>
+    <div class="col col-sm-6">
+    <p style="color: white; font-size: 20px">{{vm.searchResult.detailedDescription.articleBody}}</p>
+    </div>
+    <div class="col col-sm-3">
+        <p> </p>
+    </div>
+</div>
+</div>
+<!--<div class="col col-sm-12" style="margin-bottom: 0" align="center">-->
+    <!--<div>-->
+    <!--<p style="font-size: 50px">-->
+        <!--Positive: {{vm.searchText1.positive}}-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--<div>-->
+    <!--<p style="font-size: 50px">-->
+        <!--Negative: {{vm.searchText1.negative}}-->
+    <!--</p>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="w3-container">-->
+    <!--<div class="w3-border" align="left">-->
+        <!--<div class="w3-grey" style="height:20px; width:20% ; align-content: first" ></div>-->
+    <!--</div>-->
+
+<!--</div>-->
+    <!--</div>-->
+ <!--<div class="linee lineandover lia over dropdown">-->
+            <!--<button style="color: #FCCB1A;font-size: 30px ; text-align: left" class="dropbtn fa fa-bars"></button>-->
+        <!--<div class=" col col-sm-12 dropdown-content">-->
+            <!--<a class="linee lineandover lia over"  href="javascript:void(0)" ng-click="vm.logout()" style="; font-size: 30px">Logout</a>-->
+            <!--<a class="linee lineandover lia over" href="vm.deleteUser(user.id)" style="color: black; font-size: 30px" >Delete Account</a>-->
+        <!--</div>-->
+ <!--</div>-->
+
+<!--<div>-->
+    <!--{{vm.searchResult}}-->
+<!--</div>-->
+<!--<div class="container" id="features">-->
+    <!--<div class="row">-->
+        <!--<div class="col-md-6 feature">-->
+            <!--<i class="glyphicon glyphicon-search"></i>-->
+            <!--<h3>Google Knowledge Graph</h3>-->
+            <!--<div class="title_border"></div>-->
+            <!--<p style="color: black; font-size: 20px"> {{vm.searchResult}}</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-6 feature">-->
+            <!--<i class="glyphicon glyphicon-globe"></i>-->
+            <!--<h3>Lorem ipsum dolor</h3>-->
+            <!--<div class="title_border"></div>-->
+            <!--<p>-->
+                <!--<br/>-->
+
+            <!--</p>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="linee lineandover lia navbar" style="margin-bottom: 0">
+    <div class="col col-sm-4">
+
+    </div>
+    <div class="col col-sm-2">
+    <a href="#contact" style="box-shadow: 0 12px 16px 0 rgba(0,10,0,0), 0 17px 50px 0 rgba(0,10,0,0) ; font-size:20px; border-radius: 5px ; text-align: center" class="linee lineandover lia over">CONTACT</a>
+    </div>
+    <div class="col col-sm-2">
+        <a href="#contact" style="box-shadow: 0 12px 16px 0 rgba(0,10,0,0), 0 17px 50px 0 rgba(0,10,0,0) ; font-size:20px; border-radius: 5px ; text-align: center" class="linee lineandover lia over">ABOUT</a>
+    </div>
+    <div class="col col-sm-4">
+        <p> </p>
+    </div>
+</div>
 
