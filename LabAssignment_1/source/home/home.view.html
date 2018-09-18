@@ -1,0 +1,35 @@
+<div class="underlinee">
+    <div class="linee lineandover lia over col col-sm-2">
+        <a style="color: #FCCB1A;font-size: 30px">WEB KRAKERS</a>
+    </div>
+    <div class="linee lineandover col col-sm-7">
+        <div id="custom-search-input">
+            <div class="input-group" style="border-radius: 5px">
+                <input type="text" class="search-query form-control" placeholder="Search" style="font-size: 18px" />
+                <button style="font-size: 20px; color: black" class="fa fa-search"></button>
+                <button style="font-size: 20px; color: black" class="fa fa-microphone"></button>
+            </div>
+        </div>
+    </div>
+   <!-- <div class="linee lineandover lia over col col-sm-3">
+        <a style="color: #FCCB1A;font-size: 30px" ng-click="vm.deleteUser(user.id)" >Delete Account</a>
+    </div> -->
+    <div class="linee lineandover lia over col col-sm-3">
+        <a style="color: #FCCB1A; font-size: 20px">Hi {{vm.user.firstName}}!</a>
+        <br/>
+        <a style="text-align: left; color: #FCCB1A ">You're logged in!!</a>
+    </div>
+</div>
+<div>
+    <div class="col col-sm-1 lia underlinee" style="text-align: left; font-size: 30px; color: #FCCB1A;">
+        <a class="fa fa-bars" style="text-align: center"></a>
+    </div>
+</div>
+ <div class="linee lineandover lia over dropdown">
+            <button style="color: #FCCB1A;font-size: 30px ; text-align: left" class="dropbtn fa fa-bars"></button>
+        <div class=" col col-sm-12 dropdown-content">
+            <a class="linee lineandover lia over"  href="javascript:void(0)" ng-click="vm.logout()" style="; font-size: 30px">Logout</a>
+            <a class="linee lineandover lia over" href="vm.deleteUser(user.id)" style="color: black; font-size: 30px" >Delete Account</a>
+        </div>
+ </div>
+
