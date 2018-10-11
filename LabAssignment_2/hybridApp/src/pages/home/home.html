@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card *ngFor="let tip of tips">
+      <ion-card-header>
+        {{tip.venue.name}}
+      </ion-card-header>
+      <ion-card-content>
+        {{tip.text}}
+      </ion-card-content>
+    </ion-card>
+</ion-content>

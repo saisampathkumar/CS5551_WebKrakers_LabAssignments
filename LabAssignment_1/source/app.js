@@ -32,10 +32,11 @@
             })
 
             .otherwise({ redirectTo: '/login' });
-            // $locationProvider.html5Mode({
-            //     enabled: true,
-            //     requireBase: false
-            // });
+
+            $locationProvider.html5Mode({
+                enabled: true,
+                requireBase: false
+            });
     }
 
     run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
