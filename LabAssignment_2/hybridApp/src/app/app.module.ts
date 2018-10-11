@@ -12,10 +12,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 //imports
+import { Camera } from '@ionic-native/camera';
+import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
 import { DataServiceProvider } from '../providers/data-service/data-service';
+import { GoogleVisionServiceProvider } from '../providers/google-vision-service/google-vision-service';
 @NgModule({
   declarations: [
     MyApp,
@@ -26,6 +29,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -43,7 +47,9 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
     BarcodeScanner,
     Toast,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataServiceProvider
+    DataServiceProvider,
+    GoogleVisionServiceProvider,
+    Camera
   ]
 })
 export class AppModule {}
