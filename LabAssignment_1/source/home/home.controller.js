@@ -5,11 +5,9 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-
-    HomeController.$inject = ['$location','UserService', '$rootScope'];
-    function HomeController($location,UserService, $rootScope)
-
-    {
+		HomeController.$inject = ['$location','UserService', '$rootScope','$http'];
+    function HomeController($location,UserService, $rootScope,$http)
+	{
 
         var vm = this;
 
@@ -17,55 +15,35 @@
         vm.allUsers = [];
         vm.deleteUser = deleteUser;
         vm.logout = logout;
+        vm.searchKnowledge = searchKnowledge;
+        vm.searchText = '';
+        vm.searchResult;
+        vm.searchResult1;
 
-        initController();
-
-
-        function initController()
-        {
-            loadCurrentUser();
-            loadAllUsers();
+        function searchKnowledge() {
+            var url = 'https://kgsearch.googleapis.com/v1/entities:search?query='+vm.searchText+'&key='+config.gKey+'&limit=1&indent=True';
+            $http.get(url).then(function(response) {
+                console.log(response.data);
+                vm.searchResult = response.data.itemListElement[0].result;
+            }, function(error){
+                vm.errorText = error;
+            });
         }
-        function logout() {
+		function logout() {
           $location.path('/login');
           FB.logout(function(response) {
              // Person is now logged out
              console.log('Person is now logged out');
 
           });
-
-        }
-
-        function loadCurrentUser()
-        {
-            UserService.GetByUsername($rootScope.globals.currentUser.username)
-                .then(function (user)
-                {
-                    vm.user = user;
-                });
-        }
-
-
-        function loadAllUsers()
-        {
-            UserService.GetAll()
-                .then(function (users)
-                {
-
-                    vm.allUsers = users;
-                });
-        }
-
-
-        function deleteUser(id)
-        {
-            UserService.Delete(id)
-            .then(function ()
-            {
-
-                loadAllUsers();
-            });
-        }
+		}
+        function logout() {
+          $location.path('/login');
+          FB.logout(function(response) {
+             // Person is now logged out
+             console.log('Person is now logged out');
+		  });
+		} 
     }
 
 })();
