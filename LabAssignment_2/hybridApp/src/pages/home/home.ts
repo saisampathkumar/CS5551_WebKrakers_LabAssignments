@@ -22,8 +22,9 @@ export class HomePage {
     this.url = 'https://api.foursquare.com/v2/tips/search?client_id='+this.client_id+'&client_secret='+this.client_secret+'&v=20160215&limit=5&near='+this.city+'&query='+this.searchKeyword;
     this.http.get(this.url)
       .subscribe(
-        (res)=>{
-          this.tips = res.response.tips;console.log(this.tips);
+        (res:any)=>{
+          this.tips = res.response.tips;
+          console.log(this.tips);
         }
       )
     }
