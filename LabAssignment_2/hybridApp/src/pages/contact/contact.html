@@ -7,11 +7,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+  <button  ion-button clear (click)="Capture()">Click Picture</button>
+  <div *ngIf="base64Image">
+     <br/>
+     <strong align="center">Picture clicked</strong>
+   <img [src]="base64Image" />
+     <br/><br/>
+     <p *ngIf="visionResult">Text from the Image is : <strong> {{visionResult}}</strong></p>
+   </div>
 </ion-content>
