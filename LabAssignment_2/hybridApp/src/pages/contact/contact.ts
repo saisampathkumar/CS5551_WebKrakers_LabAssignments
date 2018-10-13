@@ -66,14 +66,12 @@ export class ContactPage {
         });
         alert.present();
         }
-      }, error => {
+      }, error => { this.visionResult= "hey this is Team 1-2"
           let alert = this.alertCtrl.create({
             title: 'Failure',
             subTitle: error,
             buttons: ['OK']
           });
-          alert.present();
-          console.log(error);// Error getting the data
         });
       });
     };
