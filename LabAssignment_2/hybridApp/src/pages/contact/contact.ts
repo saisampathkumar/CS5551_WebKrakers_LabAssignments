@@ -53,9 +53,12 @@ export class ContactPage {
           buttons: ['OK']
         });
         alert.present();
-		console.log(error);// Error getting the data
+        console.log(error);// Error getting the data
       });
-});
+
+      
+
+      });
     };
 
   ngOnInit() {
