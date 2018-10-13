@@ -1,18 +1,26 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Text Recognition
     </ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-only (click)="Capture()">
+        <ion-icon name="camera" md="md-camera"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <button  ion-button clear (click)="Capture()">Click Picture</button>
-  <div *ngIf="base64Image">
-     <br/>
-     <strong align="center">Picture clicked</strong>
-   <img [src]="base64Image" />
-     <br/><br/>
-     <p *ngIf="visionResult">Text from the Image is : <strong> {{visionResult}}</strong></p>
-   </div>
+<ion-content >
+    <ion-card *ngIf="base64Image">
+        <img [src]="base64Image"/>
+        <ion-card-content *ngIf="visionResult">
+          <ion-card-title>
+              Text Identified :
+            </ion-card-title>
+          <p>
+            <strong> {{visionResult}}</strong>
+          </p>
+        </ion-card-content>
+      </ion-card>
 </ion-content>

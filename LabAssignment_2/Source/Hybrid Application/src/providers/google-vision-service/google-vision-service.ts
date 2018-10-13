@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {map} from 'rxjs/operators';
 import { googleCloudVisionAPIKey } from '../../config';
 /*
   Generated class for the GoogleVisionServiceProvider provider.
@@ -12,7 +11,7 @@ import { googleCloudVisionAPIKey } from '../../config';
 export class GoogleVisionServiceProvider {
 
   constructor(public http: HttpClient) {}
-  getLabels(base64Image) {
+  getText(base64Image) {
     const body = {
       "requests": [
         {
@@ -29,7 +28,6 @@ export class GoogleVisionServiceProvider {
         }
       ]
     }
-    return this.http.post('https://vision.googleapis.com/v1/images:annotate?key=' + googleCloudVisionAPIKey, body).pipe(map(res => res.json()));
-
+    return this.http.post('https://vision.googleapis.com/v1/images:annotate?key=' + googleCloudVisionAPIKey, body);
   }
 }
