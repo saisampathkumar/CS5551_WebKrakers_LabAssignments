@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, List } from 'ionic-angular';
-import { map } from 'rxjs/operators';
-import 'rxjs/Rx';
-import {Http, Headers, Response} from "@angular/http";
+import { NavController, AlertController } from 'ionic-angular';
 import { Camera,CameraOptions } from '@ionic-native/camera';
 import { GoogleVisionServiceProvider } from '../../providers/google-vision-service/google-vision-service';
 
@@ -12,9 +9,8 @@ import { GoogleVisionServiceProvider } from '../../providers/google-vision-servi
 })
 export class ContactPage {
   public base64Image: string;
-  private imagesArray : List;
   public visionResult : string;
-  constructor(public navCtrl: NavController,private http: Http,public alertCtrl: AlertController, private camera: Camera,private GV:GoogleVisionServiceProvider) {
+  constructor(public navCtrl: NavController,public alertCtrl: AlertController, private camera: Camera,private GV:GoogleVisionServiceProvider) {
 
   }
   Capture(){
@@ -25,56 +21,47 @@ export class ContactPage {
         sourceType : this.camera.PictureSourceType.CAMERA,
         mediaType: this.camera.MediaType.PICTURE,
         encodingType: this.camera.EncodingType.JPEG,
+        allowEdit : true,
         targetWidth: 500,
         targetHeight: 500,
-        saveToPhotoAlbum: true
+        saveToPhotoAlbum: false
       };
       this.camera.getPicture(options).then((imageData) => {
-      this.base64Image = "data:image/jpeg;base64," + imageData;
-
-      const body = {
-        "requests": [
+        this.base64Image = "data:image/jpeg;base64," + imageData;
+        this.GV.getText(imageData).subscribe((data:any) =>
+        {
+          console.log(data);
+          if(data != null && data != "undefined" && data.response != null && data.response[0] != null && data.response[0] != "undefined" &&
+          data.response[0].textAnnotations != null && data.response[0].textAnnotations[0] != null
+          && data.response[0].textAnnotations[0] != "undefined")
           {
-            "image": {
-              "content": imageData
-            },
-            "features": [
-              {
-                "type": "TEXT_DETECTION",
-                 "maxResults":10
-
-              }
-            ]
+            this.visionResult = data.response[0].textAnnotations[0].description;
           }
-        ]
-      }
-
-
-      this.http.post('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDH7CteeKEUb4tF3OtrWGnNazWtWTPEwPY', body).pipe(map(res => res.json())).subscribe(data =>
-      {
-        console.log(data);
-        if(data != null && data != "undefined"
-        && data.responses != null && data.responses[0] != null && data.responses[0] != "undefined" &&
-        data.responses[0].textAnnotations != null && data.responses[0].textAnnotations[0] != null
-        && data.responses[0].textAnnotations[0] != "undefined"){
-        this.visionResult = data.responses[0].textAnnotations[0].description;
-        }else{
+          else
+          {
+            let alert = this.alertCtrl.create({
+              title: 'Data',
+              subTitle: "No Text Detected from the Image !!",
+              buttons: ['OK']
+            });
+          alert.present();
+          }
+      },(error) => {
         let alert = this.alertCtrl.create({
-          title: 'Data',
-          subTitle: "No Text Detected from the Image !!",
+          title: 'Failure',
+          subTitle: error,
           buttons: ['OK']
         });
         alert.present();
-        }
-      }, error => {
-          let alert = this.alertCtrl.create({
-            title: 'Failure',
-            subTitle: error,
-            buttons: ['OK']
-          });
-          alert.present();
-          console.log(error);// Error getting the data
-        });
+        console.log(error);// Error getting the data
+      });
+
+      
+
       });
     };
+
+  ngOnInit() {
+    this.Capture();
+  }
 }

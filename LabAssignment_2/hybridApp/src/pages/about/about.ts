@@ -43,4 +43,7 @@ export class AboutPage {
       );
     });
   }
+  ngOnInit() {
+    this.openBarcoder();
+  }
 }
