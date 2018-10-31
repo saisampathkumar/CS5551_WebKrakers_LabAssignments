@@ -6,3 +6,5 @@ LabAssignment_1/source/.idea/modules.xml
 LabAssignment_1/source/.idea/workspace.xml
 *.xml
 LabAssignment_2/hybridApp/src/config.ts
+*.iml
+LabAssignment_3/node_modules/*
