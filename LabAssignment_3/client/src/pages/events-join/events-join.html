@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Events Join</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="card-background-page">
+  <div *ngFor="let event_obj of result">
+
+    <ion-card>
+        <img style="height:300%" src="https://www.cticc.co.za/sites/default/files/static_images/feature-events1.jpg">
+        <div class="card-title" style="color: #6543ff; font-family: Cambria">
+            {{event_obj.eventName}}
+        </div>
+         <ion-row>
+            <ion-col>
+              <ion-item>
+                  <p style="font-size: 20px">When:</p>
+                  <p>{{event_obj.eventStartDate | date:'short'}}</p>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+                <ion-item>
+                    <p style="font-size:20px">Where:</p>
+                    <p>{{event_obj.address_one}}, {{event_obj.address_two}}</p>
+                    <p>{{event_obj.address_city}}, {{event_obj.address_state}}</p>
+                    <p>{{event_obj.address_zipcode}}</p>
+                </ion-item>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                  <button ion-button clear icon-only (click)="joinTheEvent(event_obj.eventName)">
+                      <ion-icon name="addEvent" md="md-add"></ion-icon> Join
+                    </button>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-card>
+  </div>
+</ion-content>
