@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Text Recognition
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-only (click)="Capture()">
+        <ion-icon name="camera" md="md-camera"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+    <ion-card *ngIf="base64Image">
+        <img [src]="base64Image"/>
+        <ion-card-content *ngIf="visionResult">
+          <ion-card-title>
+              Text Identified :
+            </ion-card-title>
+          <p>
+            <strong> {{visionResult}}</strong>
+          </p>
+        </ion-card-content>
+      </ion-card>
+</ion-content>

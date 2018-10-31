@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-5><ion-input type="text" [(ngModel)]="city" placeholder="Place"></ion-input></ion-col>
+        <ion-col col-5><ion-input type="text" [(ngModel)]="searchKeyword" placeholder="Search"></ion-input></ion-col>
+        <ion-col col-2>
+          <button ion-button clear icon-only (click)="getdetails()">
+            <ion-icon name="search" md="md-search"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card *ngFor="let tip of tips">
+      <ion-card-header>
+        {{tip.venue.name}}
+      </ion-card-header>
+      <ion-card-content>
+        {{tip.text}}
+      </ion-card-content>
+    </ion-card>
+</ion-content>

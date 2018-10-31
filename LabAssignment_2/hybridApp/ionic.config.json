@@ -1,0 +1,7 @@
+{
+  "name": "hybridApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

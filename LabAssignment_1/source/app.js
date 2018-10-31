@@ -32,6 +32,7 @@
             })
 
             .otherwise({ redirectTo: '/login' });
+
             $locationProvider.html5Mode({
                 enabled: true,
                 requireBase: false
