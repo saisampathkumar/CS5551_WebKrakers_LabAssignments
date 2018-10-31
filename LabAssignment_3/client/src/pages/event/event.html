@@ -1,0 +1,166 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Event</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+<!--
+    <img src="https://share.kaiserpermanente.org/wp-content/uploads/2017/10/drug-take-back-day-feature-548x336.jpg" style="width: 300px;height: 250px;"/><br/><br/>
+    <button  ion-button color="tertiary" (click)="Capture()">Take Picture</button>
+-->
+<ion-navbar>
+
+<!--
+    <ion-buttons end>
+    <button  ion-button color="tertiary" (click)="detect()">Search</button>
+         
+      </ion-buttons>
+-->
+    
+<div style="background-color: black">
+    <ion-grid >
+        <ion-row>
+            <ion-col col-2>
+                <button   ion-button style="background-color: black"> <ion-icon style="font-size: 20px" ios="ios-barcode" md="md-barcode"></ion-icon></button>
+            </ion-col>
+            <ion-col col-7 style="width:100%">
+                <ion-searchbar [(ngModel)]="myInput"></ion-searchbar>        
+            </ion-col>
+            <ion-col col-2 style="width: 90%">
+                    <button ion-button (click)="detect()" style="background-color: black"><p style="font-size: 15px" >Search</p></button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>
+<br/>
+<div *ngIf="scannedData.text">
+        <label>Your barcode is</label>
+        <br/>
+        <span>{{scannedData.text}}</span>
+      </div>
+<br/>
+<h2 ion-text color="primary" align="center">Event Loaction Details</h2>
+<form (ngSubmit)="eventDetails()" text-wrap>
+      <ion-grid>
+        <ion-row>
+        <ion-col col-6>
+            <ion-item >
+                <ion-label floating style="font-size: 20px">Event Name</ion-label>
+                <ion-input type="text" [(ngModel)] = "eventName" name="eventName" [readonly]="isReadonly()"></ion-input>
+            </ion-item>
+        </ion-col>           
+        <ion-col col-6>
+            <ion-item >
+                <ion-label floating style="font-size: 20px">Event Date</ion-label>
+                <ion-input [(ngModel)]="eventDate" name="eventDate"></ion-input>
+            </ion-item>
+        </ion-col>
+        </ion-row>
+    </ion-grid>
+        <ion-grid>
+        <ion-row>
+        <ion-col col-12>
+            <ion-item >
+                <ion-label floating style="font-size: 20px">Event Address</ion-label>
+                <ion-input type="text" [(ngModel)]="eventaddress" name="eventaddress"></ion-input>
+            </ion-item>
+        </ion-col>
+        </ion-row>
+
+        <ion-row>
+            
+        <ion-col col-12>
+            <ion-item >
+                <ion-label floating style="font-size: 20px">Zipcode</ion-label>
+                <ion-input [(ngModel)]="eventzipcode" name="eventzipcode"></ion-input>
+            </ion-item>
+        </ion-col>
+        </ion-row>
+    
+    </ion-grid>
+    </form><br><br>
+<!--     Autofiling the drug details form-->
+    <h2 ion-text color="primary" align ="center">Drug Information Form</h2>    
+     <form (ngSubmit)="drugData()" text-wrap >
+      <ion-grid><ion-row>
+        <ion-col col-12><ion-item>
+        <ion-label floating style="font-size: 20px">Name of the Drug or Product</ion-label>
+        <ion-input type="text" [(ngModel)]="drugName" name="drugname"></ion-input>
+      </ion-item></ion-col>
+      </ion-row></ion-grid>
+      <ion-grid><ion-row>
+        <ion-col col-12><ion-item>
+        <ion-label floating style="font-size: 20px">Description</ion-label>
+        <ion-textarea [(ngModel)]="drugDescription" name="description"></ion-textarea>
+        </ion-item></ion-col>
+      </ion-row></ion-grid>
+        <ion-grid><ion-row>
+        <ion-col col-12>
+            <ion-item >
+                <ion-label floating style="font-size: 20px">Classification</ion-label>
+                <ion-input type="text" [(ngModel)]="classificationClass" name="class"></ion-input>
+            </ion-item>
+        </ion-col>
+            
+        <ion-col col-12>
+            <ion-item >
+                <ion-label floating style="font-size: 20px">Subclass</ion-label>
+                <ion-input [(ngModel)]="classificationSubclass" name="subclass"></ion-input>
+            </ion-item>
+        </ion-col>
+        </ion-row></ion-grid>  
+         
+        <ion-grid><ion-row>
+        <ion-col col-12>
+            <ion-item >
+                <ion-label floating style="font-size: 20px">Dosage Form</ion-label>
+                <ion-input type="text" [(ngModel)]="dosageForm" name="dosageform"></ion-input>
+            </ion-item>
+        </ion-col>
+            
+        <ion-col col-12>
+            <ion-item >
+                <ion-label floating style="font-size: 20px">Strength</ion-label>
+                <ion-input type="text" [(ngModel)]="strength" name="strength"></ion-input>
+            </ion-item>
+        </ion-col>
+        </ion-row></ion-grid>  
+         
+        <ion-grid><ion-row>
+        <ion-col col-12>
+            <ion-item >
+                <ion-label floating style="font-size: 20px">Absorption</ion-label>
+                <ion-input type="text" [(ngModel)]="absorption" name="absorption"></ion-input>
+            </ion-item>
+        </ion-col>
+       </ion-row></ion-grid>  
+         
+         <ion-grid><ion-row>
+        <ion-col col-12>
+            <ion-item >
+                <ion-label floating style="font-size: 20px">Quantity when container was new</ion-label>
+                <ion-input type="text" [(ngModel)]="quantityWhenNew" name="quantityWhenNew"></ion-input>
+            </ion-item>
+        </ion-col>
+        <ion-col col-12>
+            <ion-item >
+                <ion-label floating style="font-size: 20px">Quantity Collected</ion-label>
+                <ion-input type="text" [(ngModel)]="quantityCollected" name="quantityCollected"></ion-input>
+            </ion-item>
+        </ion-col>
+       </ion-row></ion-grid>  
+         
+       <div style="text-align: center">  
+      <button ion-button type="submit" round>Save</button>
+    </div>
+    </form>
+         
+</ion-navbar>
+    
+</ion-content>

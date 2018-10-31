@@ -9,4 +9,5 @@ LabAssignment_2/hybridApp/src/config.ts
 LabAssignment_3/client/node_modules/*
 *.map
 LabAssignment_3/.idea/LabAssignment_3.iml
+*.iml
 LabAssignment_3/node_modules/*

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Create an Event</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list inset>
+    <ion-item>
+      <ion-label floating>Event Name</ion-label>
+      <ion-input type="text" [(ngModel)]="eventName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Start Date</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="eventStartDate"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>End Date</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="eventEndDate"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Address 1</ion-label>
+      <ion-input type="text" [(ngModel)]="address_one"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Address 2</ion-label>
+      <ion-input type="text" [(ngModel)]="address_two"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>City</ion-label>
+      <ion-input type="text" [(ngModel)]="address_city"></ion-input>
+    </ion-item>
+
+     <ion-item>
+      <ion-label floating>State</ion-label>
+      <ion-input type="text" [(ngModel)]="address_state"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>ZIP</ion-label>
+      <ion-input type="number" [(ngModel)]="address_zipcode"></ion-input>
+    </ion-item>
+  </ion-list>
+  <br/>
+  <br/>
+  <div padding style="text-align: center">
+    <button ion-button (click)="createEvent()" round medium>Create</button>
+  </div>
+</ion-content>
