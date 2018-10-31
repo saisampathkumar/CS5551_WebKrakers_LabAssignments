@@ -1,11 +1,14 @@
 package com.example.saisa.lab_2_assignment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.CompoundButton;
@@ -19,6 +22,7 @@ public class FlashLightActivity extends AppCompatActivity {
 
     private ToggleButton toggleButton;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,7 @@ public class FlashLightActivity extends AppCompatActivity {
         toggleButton = findViewById(R.id.toggleButton);
 
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @SuppressLint("NewApi")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 switchFlashLight(isChecked);
@@ -62,6 +67,7 @@ public class FlashLightActivity extends AppCompatActivity {
         alert.show();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void switchFlashLight(boolean status) {
         try
         {

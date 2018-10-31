@@ -33,6 +33,8 @@ public class CameraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+
+
         snapBtn = findViewById(R.id.snapBtn);
         detectBtn = findViewById(R.id.detectBtn);
         imageView = findViewById(R.id.imageView);
@@ -60,7 +62,6 @@ public class CameraActivity extends AppCompatActivity {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {

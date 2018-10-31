@@ -29,14 +29,12 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-
         firebaseAuth = FirebaseAuth.getInstance();
 
         if(firebaseAuth.getCurrentUser() == null){
             finish();
             startActivity(new Intent(this,LoginActivity.class));
         }
-
         ButtonSignout = (Button) findViewById(R.id.SignOut);
         ButtonFlash = (Button) findViewById(R.id.Torch);
         ButtonCamera = (Button) findViewById(R.id.OpenCamera);
@@ -45,8 +43,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         ButtonFlash.setOnClickListener(this);
         ButtonCamera.setOnClickListener(this);
     }
-
-
     @Override
     public void onClick(View view) {
         if(view == ButtonSignout){
