@@ -43,7 +43,7 @@ export class EventsHomePage {
     });
   }
   loadevents(name:string){
-    this.url = 'http://127.0.0.1:3000/events/search/users?user=true&searchtext='+name;
+    this.url = '/events/search/users?user=true&searchtext='+name;
     this.http.get(this.url)
       .subscribe(
         (res:any)=>{
@@ -52,7 +52,7 @@ export class EventsHomePage {
       )
   }
   deleteEvent(_id:any){
-    this.url = 'http://127.0.0.1:3000/events/delete?id='+_id;
+    this.url = '/events/delete?id='+_id;
     this.http.delete(this.url)
       .subscribe(
         (res:any)=>{

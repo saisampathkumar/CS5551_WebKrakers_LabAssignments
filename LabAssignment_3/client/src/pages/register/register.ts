@@ -38,7 +38,7 @@ export class RegisterPage {
     }
 
     if (validate == true){
-      this.url = 'http://127.0.0.1:3000/users/create';
+      this.url = '/users/create';
       this.firebase.auth.createUserWithEmailAndPassword(this.emailId.value, this.pwd.value).then(data =>{
           console.log("Got data from Firebase: ", data);
           this.http.post(this.url,{

@@ -48,7 +48,7 @@ toggleFirst() {
     })
   }
   loadevents(name:string){
-    this.url = 'http://127.0.0.1:3000/events/search/users?user=false&searchtext='+name;
+    this.url = '/events/search/users?user=false&searchtext='+name;
     this.http.get(this.url)
       .subscribe(
         (res:any)=>{
@@ -58,7 +58,7 @@ toggleFirst() {
       )
   }
   joinTheEvent(name:string){
-    this.url = 'http://127.0.0.1:3000/event/update/users';
+    this.url = '/event/update/users';
     this.http.put(this.url,{
       event_name:name,
       user:this.created_by

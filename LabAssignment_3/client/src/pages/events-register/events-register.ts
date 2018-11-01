@@ -31,7 +31,7 @@ export class EventsRegisterPage {
     })
   }
   createEvent(){
-    this.url = 'http://127.0.0.1:3000/event/create';
+    this.url = '/event/create';
     this.http.post(this.url,{
       eventName:this.eventName,
       eventStartDate:this.eventStartDate,

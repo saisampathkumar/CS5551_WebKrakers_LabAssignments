@@ -76,7 +76,7 @@ export class EventPage {
 
 detect(){
   if (this.myInput != ""){
-      this.url = 'http://127.0.0.1:3000/drug/search?searchtext='+this.myInput;
+      this.url = '/drug/search?searchtext='+this.myInput;
       this.http.get(this.url)
         .subscribe(
           (res:any)=>{
@@ -98,7 +98,7 @@ detect(){
 
 drugData(){
   if (this.myInput != "" && this.drugName !="" && this.drugDescription !="" ){
-  this.url = 'http://127.0.0.1:3000/product/create';
+  this.url = '/product/create';
     this.http.post(this.url,
       {
       drugName: this.drugName,
