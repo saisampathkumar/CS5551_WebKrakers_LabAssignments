@@ -104,9 +104,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var TabsPage = /** @class */ (function () {
     function TabsPage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.tab3Root = __WEBPACK_IMPORTED_MODULE_5__events_home_events_home__["a" /* EventsHomePage */];
+        this.tab1Root = __WEBPACK_IMPORTED_MODULE_5__events_home_events_home__["a" /* EventsHomePage */];
         this.tab2Root = __WEBPACK_IMPORTED_MODULE_2__about_about__["a" /* AboutPage */];
-        this.tab1Root = __WEBPACK_IMPORTED_MODULE_3__chat_chat__["a" /* ChatPage */];
+        this.tab3Root = __WEBPACK_IMPORTED_MODULE_3__chat_chat__["a" /* ChatPage */];
         this.tab4Root = __WEBPACK_IMPORTED_MODULE_6__reports_reports__["a" /* ReportsPage */];
     }
     TabsPage.prototype.navigateToSignIn = function () {
@@ -126,9 +126,10 @@ var TabsPage = /** @class */ (function () {
     TabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"E:\Repository\CS5551_WebKrakers_LabAssignments\LabAssignment_3\client\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>  \n\n  <ion-tab [root]="tab4Root" tabTitle="Reports" tabIcon="md-analytics"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Chat" tabIcon="md-chatbubbles"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n\n  <ion-tab (ionSelect)="signOut()" tabTitle="Sign Out" tabIcon="log-out"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"E:\Repository\CS5551_WebKrakers_LabAssignments\LabAssignment_3\client\src\pages\tabs\tabs.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object])
     ], TabsPage);
     return TabsPage;
+    var _a;
 }());
 
 //# sourceMappingURL=tabs.js.map
@@ -414,12 +415,8 @@ var ChatPage = /** @class */ (function () {
         };
     }
     ChatPage.prototype.ngOnInit = function () {
-        var _this = this;
         this.initModel();
-        // Using timeout due to https://github.com/angular/angular/issues/14748
-        setTimeout(function () {
-            _this.openUserPopup(_this.defaultDialogUserParams);
-        }, 0);
+        this.initIoConnection();
     };
     ChatPage.prototype.ngAfterViewInit = function () {
         var _this = this;
@@ -520,19 +517,20 @@ var ChatPage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_2__angular_material__["j" /* MatList */], { read: __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* ElementRef */] }),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* ElementRef */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
     ], ChatPage.prototype, "matList", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_10" /* ViewChildren */])(__WEBPACK_IMPORTED_MODULE_2__angular_material__["k" /* MatListItem */], { read: __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* ElementRef */] }),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_core__["U" /* QueryList */])
+        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_core__["U" /* QueryList */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_core__["U" /* QueryList */]) === "function" && _b || Object)
     ], ChatPage.prototype, "matListItems", void 0);
     ChatPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-chat',template:/*ion-inline-start:"E:\Repository\CS5551_WebKrakers_LabAssignments\LabAssignment_3\client\src\pages\chat\chat.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>chat</ion-title>\n  </ion-navbar>\n\n</ion-header>\n<ion-content>\n    <button mat-fab (click)="onClickUserInfo()">\n        <mat-icon>person</mat-icon>\n      </button>\n  <div class="chat-container">\n    <mat-card class="main-card">\n      <mat-list class="chat-list">\n        <mat-list-item *ngFor="let message of messages" [ngClass]="[(message.action === undefined && message.from.id === user.id)? \'chat-list-item\': \'\']">\n          <img mat-list-avatar *ngIf="message.action === undefined" [src]="message.from.avatar">\n          <h4 mat-line *ngIf="message.action === undefined">\n            <b>{{message.from.name}}</b>\n          </h4>\n          <p mat-line *ngIf="message.action === undefined">\n            <span> {{message.content}} </span>\n          </p>\n          <p mat-line *ngIf="message.action === action.JOINED" class="chat-notification">\n            <span> <b>{{message.from.name}}</b> joined to the conversation. </span>\n          </p>\n          <p mat-line *ngIf="message.action === action.RENAME" class="chat-notification">\n            <span> <b>{{message.content.previousUsername}}</b> is now <b>{{message.content.username}}</b> </span>\n          </p>\n        </mat-list-item>\n      </mat-list>\n      <div class="chat-footer-container">\n        <mat-icon>message</mat-icon>\n        <mat-form-field class="chat-input">\n          <input matInput \n                 #inputMessage \n                 maxlength="140" \n                 placeholder="Type your message" \n                 [(ngModel)]="messageContent" \n                 (keyup.enter)="sendMessage(messageContent)">\n          <mat-hint align="end">{{inputMessage.value.length}}/140</mat-hint>\n        </mat-form-field>\n      </div>\n    </mat-card>\n  </div>\n</ion-content>\n'/*ion-inline-end:"E:\Repository\CS5551_WebKrakers_LabAssignments\LabAssignment_3\client\src\pages\chat\chat.html"*/,
+            selector: 'page-chat',template:/*ion-inline-start:"E:\Repository\CS5551_WebKrakers_LabAssignments\LabAssignment_3\client\src\pages\chat\chat.html"*/'<ion-header>\n  <ion-navbar>\n  <ion-grid>\n    <ion-row>\n      <ion-col col-1><ion-icon name="chatbubbles" md="md-chatbubbles"></ion-icon></ion-col>\n      <ion-col col-11><ion-input type="text" placeholder="Type" \n        maxlength="140"\n        [(ngModel)]="messageContent" \n        (keyup.enter)="sendMessage(messageContent)"></ion-input></ion-col>\n    </ion-row>\n  </ion-grid>   \n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <div class="chat-container">\n    <mat-card class="main-card">\n      <mat-list class="chat-list">\n        <mat-list-item *ngFor="let message of messages" [ngClass]="[(message.action === undefined && message.from.id === user.id)? \'chat-list-item\': \'\']">\n          <img mat-list-avatar *ngIf="message.action === undefined" [src]="message.from.avatar">\n          <h4 mat-line *ngIf="message.action === undefined">\n            <b>{{message.from.name}}</b>\n          </h4>\n          <p mat-line *ngIf="message.action === undefined">\n            <span> {{message.content}} </span>\n          </p>\n          <p mat-line *ngIf="message.action === action.JOINED" class="chat-notification">\n            <span> <b>{{message.from.name}}</b> joined to the conversation. </span>\n          </p>\n          <p mat-line *ngIf="message.action === action.RENAME" class="chat-notification">\n            <span> <b>{{message.content.previousUsername}}</b> is now <b>{{message.content.username}}</b> </span>\n          </p>\n        </mat-list-item>\n      </mat-list>\n    </mat-card>\n  </div>\n</ion-content>\n'/*ion-inline-end:"E:\Repository\CS5551_WebKrakers_LabAssignments\LabAssignment_3\client\src\pages\chat\chat.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__shared_services_socket_service__["a" /* SocketService */], __WEBPACK_IMPORTED_MODULE_2__angular_material__["d" /* MatDialog */]])
+        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["f" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__shared_services_socket_service__["a" /* SocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__shared_services_socket_service__["a" /* SocketService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_material__["d" /* MatDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_material__["d" /* MatDialog */]) === "function" && _e || Object])
     ], ChatPage);
     return ChatPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=chat.js.map
@@ -558,7 +556,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SERVER_URL = 'http://localhost:8080';
+var SERVER_URL = 'http://localhost:3000';
 var SocketService = /** @class */ (function () {
     function SocketService() {
     }
@@ -1130,15 +1128,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // Initialize Firebase
-var firebaseConfig = {
-    // insert config here
-    apiKey: "AIzaSyAzZT0RI1MQf--tTBp_AQ7qwr0wcMuXJG8",
-    authDomain: "myapp-ceed1.firebaseapp.com",
-    databaseURL: "https://myapp-ceed1.firebaseio.com",
-    projectId: "myapp-ceed1",
-    storageBucket: "myapp-ceed1.appspot.com",
-    messagingSenderId: "822624922951"
-};
+var firebaseConfig = {};
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -1267,7 +1257,7 @@ var DialogUserType;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(361);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(362);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(110);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1281,11 +1271,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-//TO-DO delete after development
 
 var MyApp = /** @class */ (function () {
     function MyApp(platform, statusBar, splashScreen) {
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__["a" /* TabsPage */];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_login_login__["a" /* LoginPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -1296,9 +1285,10 @@ var MyApp = /** @class */ (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"E:\Repository\CS5551_WebKrakers_LabAssignments\LabAssignment_3\client\src\app\app.html"*/'<ion-menu [content]="content" side="right">\n\n  <ion-header>\n\n    <ion-toolbar>\n\n      <ion-title>Menu</ion-title>\n\n    </ion-toolbar>\n\n  </ion-header>\n\n  <ion-content>\n\n\n\n\n\n  </ion-content>\n\n</ion-menu>\n\n\n\n<ion-nav id="nav" #content [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"E:\Repository\CS5551_WebKrakers_LabAssignments\LabAssignment_3\client\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _c || Object])
     ], MyApp);
     return MyApp;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=app.component.js.map

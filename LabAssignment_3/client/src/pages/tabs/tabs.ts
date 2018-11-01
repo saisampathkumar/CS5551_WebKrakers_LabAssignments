@@ -12,9 +12,9 @@ import { ReportsPage } from '../reports/reports';
 })
 export class TabsPage {
 
-  tab3Root = EventsHomePage;
+  tab1Root = EventsHomePage;
   tab2Root = AboutPage;
-  tab1Root = ChatPage;
+  tab3Root = ChatPage;
   tab4Root = ReportsPage;
   constructor(public navCtrl: NavController) {
 

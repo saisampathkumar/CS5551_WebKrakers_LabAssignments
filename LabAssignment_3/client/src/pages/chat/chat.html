@@ -1,14 +1,17 @@
 <ion-header>
-
   <ion-navbar>
-    <ion-title>chat</ion-title>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-1><ion-icon name="chatbubbles" md="md-chatbubbles"></ion-icon></ion-col>
+      <ion-col col-11><ion-input type="text" placeholder="Type" 
+        maxlength="140"
+        [(ngModel)]="messageContent" 
+        (keyup.enter)="sendMessage(messageContent)"></ion-input></ion-col>
+    </ion-row>
+  </ion-grid>   
   </ion-navbar>
-
 </ion-header>
 <ion-content>
-    <button mat-fab (click)="onClickUserInfo()">
-        <mat-icon>person</mat-icon>
-      </button>
   <div class="chat-container">
     <mat-card class="main-card">
       <mat-list class="chat-list">
@@ -28,18 +31,6 @@
           </p>
         </mat-list-item>
       </mat-list>
-      <div class="chat-footer-container">
-        <mat-icon>message</mat-icon>
-        <mat-form-field class="chat-input">
-          <input matInput 
-                 #inputMessage 
-                 maxlength="140" 
-                 placeholder="Type your message" 
-                 [(ngModel)]="messageContent" 
-                 (keyup.enter)="sendMessage(messageContent)">
-          <mat-hint align="end">{{inputMessage.value.length}}/140</mat-hint>
-        </mat-form-field>
-      </div>
     </mat-card>
   </div>
 </ion-content>
