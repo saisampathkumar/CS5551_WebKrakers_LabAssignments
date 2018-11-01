@@ -25724,11 +25724,6 @@ page-events-join .card-background-page .card-subtitle {
   color: #fff;
 }
 
-page-home .titleicon div {
-  display: inline-block;
-  margin-bottom: 10px;
-}
-
 page-login #homebuttons {
   display: -webkit-box;
   display: -webkit-flex;

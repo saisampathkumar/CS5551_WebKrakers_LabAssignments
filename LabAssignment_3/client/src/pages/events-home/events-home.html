@@ -28,6 +28,9 @@
         </ion-avatar>
         <h2>{{event_obj.eventName}}</h2>
         <p>{{event_obj.eventStartDate | date:'short'}}</p>
+        <button *ngIf="created_by == event_obj.created_by" ion-button clear icon-only (click)="deleteEvent(event_obj.eventName)" item-end>
+          <ion-icon name="trash" md="md-trash"></ion-icon>
+        </button>
       </ion-item>
       <img (click)="event(event_obj.eventName,event_obj.eventStartDate,event_obj.address_city,event_obj.address_zipcode)" src="https://images.pexels.com/photos/415825/pexels-photo-415825.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350">
       <ion-card-content>

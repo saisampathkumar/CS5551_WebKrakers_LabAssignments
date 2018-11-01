@@ -76,4 +76,24 @@ module.exports = function (app, db) {
             }
         })
     });
+    //api to delete event details
+    app.delete('/events/delete',(req,res)=>{
+        let search_text = req.query.id;
+        let query = {eventName:search_text};
+        console.log(query);
+        events_model.deleteOne(query).exec((err) => {
+            if (!err) {
+                res.send({
+                    result: "Success",
+                    message: search_text+" deleted successfully !"
+                });
+            } else {
+                res.status(400).send({
+                    result: "Failure",
+                    message: "Error in removing events from list",
+                    error: err.message
+                });
+            }
+        });
+    });
 };

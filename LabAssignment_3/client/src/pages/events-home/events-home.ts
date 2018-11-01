@@ -51,6 +51,16 @@ export class EventsHomePage {
         }
       )
   }
+  deleteEvent(_id:any){
+    this.url = 'http://127.0.0.1:3000/events/delete?id='+_id;
+    this.http.delete(this.url)
+      .subscribe(
+        (res:any)=>{
+          this.loadevents(this.created_by);
+          alert(res.message);
+        }
+      )
+  }
   tapEvent(e) {
     this.tap++
   }
