@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const db = require('mongoose'),db_string = 'mongodb://ase_lab3:ase_lab3@ds135993.mlab.com:35993/medicationtakeback';
+const db = require('mongoose'),db_string = 'mongodb://username:password@ds135993.mlab.com:35993/medicationtakeback';
 var app = express();
 var cors = require('cors');
 
